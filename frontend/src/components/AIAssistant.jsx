@@ -15,7 +15,7 @@ export default function AIAssistant({ editorCode = "", language = "javascript" }
   async function testConnection() {
     try {
       const apiUrl = import.meta.env.DEV 
-        ? "http://localhost:5000/api/test"
+        ? "https://code-editor-8eh5.onrender.com/api/test"
         : "/api/test";
       const res = await fetch(apiUrl);
       const data = await res.json();

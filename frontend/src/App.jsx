@@ -5,7 +5,7 @@ import Editor from "@monaco-editor/react";
 import RunPanel from "./components/RunPanel";
 import AIAssistant from "./components/AIAssistant";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://code-editor-8eh5.onrender.com");
 
 const App = () => {
   const [joined, setJoined] = useState(false);
