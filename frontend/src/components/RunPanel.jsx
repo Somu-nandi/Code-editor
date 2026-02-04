@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 
 // local backend in development
-const socket = io("https://code-editor-8eh5.onrender.com");
+const socket = io(import.meta.env.VITE_API_URL || "https://code-editor-8eh5.onrender.com");
 
 export default function RunPanel({ code = "", setCode }) {
   const [lang, setLang] = useState("python");

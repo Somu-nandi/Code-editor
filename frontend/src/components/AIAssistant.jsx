@@ -14,9 +14,8 @@ export default function AIAssistant({ editorCode = "", language = "javascript" }
 
   async function testConnection() {
     try {
-      const apiUrl = import.meta.env.DEV 
-        ? "https://code-editor-8eh5.onrender.com/api/test"
-        : "/api/test";
+      const baseUrl = import.meta.env.VITE_API_URL || "";
+      const apiUrl = `${baseUrl}/api/test`;
       const res = await fetch(apiUrl);
       const data = await res.json();
       if (data.keyFound) {
@@ -38,10 +37,9 @@ export default function AIAssistant({ editorCode = "", language = "javascript" }
     setLoading(true);
     setReply("");
     try {
-      // Use full URL in development, relative in production
-      const apiUrl = import.meta.env.DEV 
-        ? "http://localhost:5000/api/assistant"
-        : "/api/assistant";
+      // Use full URL from env var, or relative path if not set
+      const baseUrl = import.meta.env.VITE_API_URL || "";
+      const apiUrl = `${baseUrl}/api/assistant`;
       
       const res = await fetch(apiUrl, {
         method: "POST",
